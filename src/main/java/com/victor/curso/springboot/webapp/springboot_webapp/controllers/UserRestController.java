@@ -8,12 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.victor.curso.springboot.webapp.springboot_webapp.models.User;
+import com.victor.curso.springboot.webapp.springboot_webapp.models.dto.UserDto;
 
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
 
-    @GetMapping("/details")
+    @GetMapping("/detailsDto")
+    public UserDto restDetails(){
+
+        UserDto userDto = new UserDto();
+        User user = new User("Victor", "Godinez");
+        userDto.setUser(user);
+        userDto.setTitle("Hello world DTO");
+
+        return userDto;
+    }
+
+    @GetMapping("/detailsMap")
     public Map<String, Object> restDetails(){
 
         User user = new User("Victor", "Godinez");
